@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/common/helper/error/app_error.dart';
 import 'package:movie_app/core/enum/app_error_type.dart';
 
+import '../../../../core/error/app_error.dart';
 import '../../../../domain/movie/usecases/get_trending_movie_usecase.dart';
 import '../../../../service_locator.dart';
 import 'trending_state.dart';

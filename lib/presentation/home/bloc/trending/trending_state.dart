@@ -1,6 +1,6 @@
 import 'package:movie_app/domain/movie/entity/movie.dart';
 
-import '../../../../common/helper/error/app_error.dart';
+import '../../../../core/error/app_error.dart';
 
 abstract class TrendingState {}
 

@@ -2,8 +2,8 @@
 
  import '../../../core/enum/app_error_type.dart';
 import '../../../core/enum/network_enum.dart';
+import '../../../core/error/app_error.dart';
 import '../../../core/error/error_handler.dart';
-import '../error/app_error.dart';
 
 class AppErrorMapper{
   final AppErrorType appErrorType;
@@ -25,6 +25,8 @@ class AppErrorMapper{
             return const AppError(AppErrorType.unauthorised, message: 'Unauthorized access');
           case HttpException.internalServerError:
             return const AppError(AppErrorType.api, message: 'Internal server error');
+          case HttpException.invalidCredentials:
+            return const AppError(AppErrorType.unauthorised, message: 'Invalid Credentials');
           default:
             return const AppError(AppErrorType.api, message: 'Unknown HTTP error');
         }

@@ -6,6 +6,7 @@ enum NetworkException {
 
 enum HttpException{
   unAuthorised,
+  invalidCredentials,
   internalServerError,
   unknown,
 }

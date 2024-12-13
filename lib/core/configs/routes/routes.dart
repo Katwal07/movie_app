@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/domain/movie/entity/movie.dart';
 import 'package:movie_app/presentation/home/pages/home.dart';
-import 'package:movie_app/presentation/navigation_bar/pages/navigation_page.dart';
+import 'package:movie_app/presentation/search/pages/search.dart';
+import 'package:movie_app/presentation/watch/pages/watch_page.dart';
 import '../../../presentation/auth/pages/login/login.dart';
 import '../../../presentation/auth/pages/signup/signup.dart';
 import '../../../presentation/presentation.dart';
@@ -15,11 +17,13 @@ class Routes {
         return MaterialPageRoute(builder: (context) => const LoginScreen());
       case RoutesName.signupScreen:
         return MaterialPageRoute(builder: (context) => const SignupScreen());
-         case RoutesName.homeScreen:
-        return MaterialPageRoute(builder: (context) => const HomeScreen());
-        case RoutesName.navigation:
-        return MaterialPageRoute(builder: (context) => const NavigationPage());
-
+      case RoutesName.homeScreen:
+        return MaterialPageRoute(builder: (context) => HomeScreen());
+      case RoutesName.watchPage:
+        final movieDetails = settings.arguments as MovieEntity;
+        return MaterialPageRoute(builder: (context) => WatchPage(movieEntity: movieDetails,));
+      case RoutesName.searchPage:
+        return MaterialPageRoute(builder: (context) => const SearchPage());
       default:
         return MaterialPageRoute(
           builder: (context) {

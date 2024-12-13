@@ -6,5 +6,6 @@ enum AppErrorType {
   userExists,
   database,
   unknown,
+  invalidCredentials,
   noInternet,
 }

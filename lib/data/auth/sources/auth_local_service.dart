@@ -10,7 +10,7 @@ class AuthLocalServiceImpl extends AuthLocalService {
     SharedPreferences sharedPrefs =await SharedPreferences.getInstance();
     var token = sharedPrefs.getString("token");
     if(token != null && token.isNotEmpty){
-      return false;
+      return true;
     }else{
       return false;
     }

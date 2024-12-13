@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/common/bloc/button/button_cubit.dart';
-import 'package:movie_app/common/bloc/button/button_state.dart';
-
-import '../../../core/constant/colors.dart';
+import 'package:movie_app/common/bloc/generic/generic_cubit.dart';
+import 'package:movie_app/common/bloc/generic/generic_state.dart';
 
 class BasicReactiveButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -21,9 +19,9 @@ class BasicReactiveButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ButtonCubit, ButtonState>(
+    return BlocBuilder<GenericCubit, GenericDataState>(
       builder: (context, state) {
-        if (state is ButtonLoadingState) {
+        if (state is DataLoading) {
           return _loading(context);
         }
         return _loaded(context);
@@ -45,15 +43,17 @@ class BasicReactiveButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-          minimumSize:
-              Size(width ?? MediaQuery.of(context).size.width, height ?? 80)),
+        backgroundColor: const Color(0xff242A32),
+        minimumSize:
+            Size(width ?? MediaQuery.of(context).size.width, height ?? 80),
+      ),
       child: content ??
           Text(
             title,
             style: Theme.of(context)
                 .textTheme
                 .labelLarge!
-                .copyWith(color: onSurfaceContainerColor),
+                .copyWith(color: Colors.white),
           ),
     );
   }

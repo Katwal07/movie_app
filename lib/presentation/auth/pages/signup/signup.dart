@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:movie_app/common/bloc/button/button_cubit.dart';
-import 'package:movie_app/core/configs/assets/app_vectors.dart';
-import 'package:movie_app/core/configs/routes/routes_name.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie_app/common/bloc/generic/generic_cubit.dart';
+import 'package:movie_app/common/widgets/app_bar/app_bar.dart';
+import 'package:movie_app/core/configs/assets/app_images.dart';
 import 'package:movie_app/presentation/auth/pages/signup/widgets/signup_form.dart';
-
-import '../../../../common/bloc/button/button_state.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
@@ -14,28 +12,22 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ButtonCubit(),
-      child: BlocListener<ButtonCubit, ButtonState>(
-        listener: (context, state) {
-          if(state is ButtonLoadingState){
-            const CircularProgressIndicator();
-          }
-          if(state is ButtonSuccessState){
-            Navigator.pushNamed(context, RoutesName.loginScreen);
-          }
-        },
+      create: (context) => GenericCubit(),
+      child: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: AssetImage(AppImages.authPicture),
+          ),
+        ),
         child: Scaffold(
+          appBar: BasicAppBar(
+            containerColor: Colors.white,
+            hideback: false, height: 80.h,),
+          backgroundColor: Colors.transparent,
           body: SingleChildScrollView(
             child: Center(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 50),
-                    child: SvgPicture.asset(AppVectors.splashVector),
-                  ),
-                  SignupForm(),
-                ],
-              ),
+              child: Center(child: SignupForm()),
             ),
           ),
         ),

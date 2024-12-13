@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? title;
@@ -7,6 +8,7 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Color? backgroundColor;
   final bool hideback;
   final double? height;
+  final Color containerColor;
 
   const BasicAppBar({
     super.key,
@@ -15,7 +17,7 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.backgroundColor,
     required this.hideback,
     this.height,
-    this.leading,
+    this.leading, required this.containerColor,
   });
 
   @override
@@ -35,16 +37,16 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
               : IconButton(
                   onPressed: () => Navigator.pop(context),
                   icon: Container(
-                    height: 50,
-                    width: 50,
+                    height: 50.h,
+                    width: 50.w,
                     decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.surface,
+                      color: containerColor,
                       shape: BoxShape.circle,
                     ),
                     child: Icon(
                       Icons.arrow_back_ios_new,
-                      size: 15,
-                      color: Theme.of(context).colorScheme.primaryContainer,
+                      size: 15.sp,
+                      color: const Color(0xff242A32),
                     ),
                   ),
                 )),
