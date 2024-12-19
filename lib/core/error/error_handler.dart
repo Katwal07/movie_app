@@ -16,6 +16,12 @@ class ErrorHandler {
           } catch (e) {
             return Left(DataParseError(Exception(e.toString())));
           }
+        case 201:
+        try {
+            return Right(parse(response.data));
+          } catch (e) {
+            return Left(DataParseError(Exception(e.toString())));
+          }
         case 400:
           return Left(DataHttpError(HttpException.invalidCredentials));
         case 401:

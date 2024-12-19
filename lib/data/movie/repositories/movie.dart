@@ -8,7 +8,7 @@ import 'package:movie_app/service_locator.dart';
 import '../../../core/error/app_error.dart';
 
 class MovieRepositoryImpl extends MovieRepository {
-  @override
+   @override
   Future<Either<AppError, List<MovieEntity>>> getTrendingMovies() async {
     var returnedData = await sl<MovieApiService>().getTrendingMovies();
     return returnedData.fold((error) {

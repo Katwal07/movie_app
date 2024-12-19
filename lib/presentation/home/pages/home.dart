@@ -7,12 +7,10 @@ import 'package:movie_app/common/bloc/generic/generic_state.dart';
 import 'package:movie_app/common/helper/message/message.dart';
 import 'package:movie_app/common/widgets/app_bar/app_bar.dart';
 import 'package:movie_app/core/configs/assets/app_vectors.dart';
-import 'package:movie_app/domain/movie/usecases/get_trending_movie_usecase.dart';
 import 'package:movie_app/presentation/home/bloc/movie_category/movie_tab_index_cubit.dart';
 import 'package:movie_app/presentation/home/bloc/movie_category/movie_tab_index_state.dart';
 import 'package:movie_app/presentation/home/widgets/movie_tab/movie_tabbed_widget.dart';
 import 'package:movie_app/presentation/home/widgets/trending_movie.dart';
-import 'package:movie_app/service_locator.dart';
 
 import '../../drawer/navigation_drawer.dart';
 
@@ -27,10 +25,10 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) =>
-              GenericCubit()..execute(sl<GetTrendingMovieUseCase>()),
-        ),
+        // BlocProvider(
+        //   create: (context) =>
+        //       GenericCubit()..execute(sl<GetTrendingMovieUseCase>()),
+        // ),
         BlocProvider(create: (context) => MovieTabIndexCubit()),
       ],
       child: BlocListener<GenericCubit, GenericDataState>(

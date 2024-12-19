@@ -7,7 +7,7 @@ import 'package:movie_app/service_locator.dart';
 
 class SearchMovieUsecase extends Usecase<Either<AppError, List<MovieEntity>>,String>{
   @override
-  Future<Either<AppError, List<MovieEntity>>> call({String ?params}) async{
+  Future<Either<AppError, List<MovieEntity>>> call({String ? params}) async{
     return await sl<MovieRepository>().searchMovie(params!);
   }
 }
